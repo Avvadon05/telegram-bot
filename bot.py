@@ -29,16 +29,13 @@ async def profile_handler(message: Message):
     ref_count = get_ref_count(user[0])
     bot_username = os.getenv("BOT_USERNAME")
     ref_link = f"https://t.me/{bot_username}?start={user[0]}"
-    await message.answer(f"👤 <b>Ваш профиль</b>
-
-"
-                         f"Имя: {user[1]}
-"
-                         f"Баланс: {balance} монет
-"
-                         f"Реферальная ссылка: {ref_link}
-"
-                         f"Рефералов: {ref_count}")
+await message.answer(
+    f"""👤 <b>Ваш профиль</b>
+Имя: {user[1]}
+Баланс: {balance} монет
+Реферальная ссылка: {ref_link}
+Рефералов: {ref_count}"""
+)
 
 async def main():
     await dp.start_polling(bot)
